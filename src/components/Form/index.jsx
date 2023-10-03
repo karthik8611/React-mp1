@@ -6,8 +6,7 @@ function FormControl({ handleData, data }) {
   const [onError, setOnError] = useState(false);
   const [isGoingToContinue, setIsGoingToContinue] = useState(false);
 
-  //icon for the application
-  const completeIcon = "./images/icon-complete.svg";
+  
 
   //current year for date's input validation
   const currentyear = new Date()
@@ -113,7 +112,6 @@ function FormControl({ handleData, data }) {
     >
       {isGoingToContinue ? (
         <div className="form__complete">
-          <img src={completeIcon} alt="" />
           <h2>Thank You</h2>
           <p>We've added your card details</p>
         </div>

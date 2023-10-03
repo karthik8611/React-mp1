@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./styles/App.css";
+import CreditCard from "./components/CreditCard";
+import FormControl from "./components/Form";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  //form data for inputs value and cards rendering
+  const [formInfo, setFormInfo] = useState({
+    name: "",
+    number: "",
+    month: "",
+    year: "",
+    cvc: "",
+  });
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className="app">
+      <picture>
+        <img src="./images/bg-main-desktop.png" alt="background" />
+      </picture>
+      <aside className="card-wrapper">
+        <CreditCard
+          name={formInfo.name}
+          number={formInfo.number}
+          month={formInfo.month}
+          year={formInfo.year}
+          side={false}
+        />
+        <CreditCard cvc={formInfo.cvc} side={true} />
+      </aside>
+      <div className="form-wrapper">
+        <FormControl handleData={setFormInfo} data={formInfo} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </main>
+  );
 }
 
-export default App
+export default App;
